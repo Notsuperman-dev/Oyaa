@@ -1,0 +1,232 @@
+/* Light Mode */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f4f4f4;
+    --body-background-image: url('/images/lightBG.jpg'); /* Background image for light mode */
+    --text-color: #333;
+    --container-background: #ffffffca;
+    --input-background: #ffffff;
+    --input-border-color: #ddd;
+    --button-background: #007bff;
+    --button-hover-background: #0056b3;
+    --divider-color: #ddd;
+    --link-color: #007bff;
+    --alert-text-color: #ff0000;
+    --alert-background-color: #00000021;
+    --transition-duration: 0.3s;
+}
+* {
+    font-family: var(--font-family);
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--body-background-color);
+    background-image: var(--body-background-image);
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating of the image */
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+}
+
+.login-box {
+    background-color: var(--container-background);
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px; /* Adjust size as needed */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.login-header p {
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.login-header a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    font-size: 16px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration), border-color var(--transition-duration), color var(--transition-duration);
+}
+
+.input-group .required {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--alert-text-color);
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-group i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-background);
+    color: white;
+    width: 100%;
+    transition: background-color var(--transition-duration);
+}
+
+.submit-btn:hover {
+    background-color: var(--button-hover-background);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.footer a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.alert {
+    color: var(--alert-text-color);
+    background-color: var(--alert-background-color);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
+    transition: opacity var(--transition-duration) ease-out;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --body-background-color: #1a1a1b;
+    --body-background-image: url('/images/darkBG.jpg'); /* Background image for dark mode */
+    --text-color: #d7dadc;
+    --container-background: #272729e3;
+    --input-background: #1f1f1f;
+    --input-border-color: #343536;
+    --button-background: #0079d3;
+    --button-hover-background: #0056b3;
+    --divider-color: #343536;
+    --link-color: #0079d3;
+    --alert-text-color: #ffffff;
+    --alert-background-color: #ff0b0b07;
+    --transition-duration: 0.3s;
+}
+
+.dark-mode body {
+    background-color: var(--body-background-color);
+    background-image: var(--body-background-image);
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating of the image */
+    color: var(--text-color);
+}
+
+.dark-mode .login-box {
+    background-color: var(--container-background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .input-group input {
+    background-color: var(--input-background);
+    border: 1px solid var(--input-border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .input-group .required {
+    color: var(--alert-text-color);
+}
+
+.dark-mode .password-group i {
+    color: var(--text-color);
+}
+
+.dark-mode .submit-btn {
+    background-color: var(--button-background);
+}
+
+.dark-mode .submit-btn:hover {
+    background-color: var(--button-hover-background);
+}
+
+.dark-mode .alert {
+    color: var(--alert-text-color);
+    background-color: var(--alert-background-color);
+}

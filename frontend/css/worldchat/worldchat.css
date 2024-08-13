@@ -1,0 +1,319 @@
+:root {
+    --font-family: 'Rubik', sans-serif; /* Updated to use Rubik font */
+
+    --color-light-bg: #f0f0f0;
+    --color-dark-bg: #121212;
+    --color-light-text: #000;
+    --color-dark-text: #e0e0e0;
+    --color-light-chat-bg: #fff;
+    --color-dark-chat-bg: #333;
+    --color-light-border: #ccc;
+    --color-dark-border: #555;
+    --color-send-button: #007bff;
+    --color-send-button-hover: #0056b3;
+    --color-error-bg: #f8d7da;
+    --color-error-text: #721c24;
+    --color-placeholder-light: #aaa;
+    --color-placeholder-dark: #555;
+    --input-height: 60px;
+    --user-icon-url: url('./user-icon.png');
+    --color-top-user: #FFD700;
+    --color-top-user-text: #FF4500;
+    --color-top-user-bubble-text: #000;
+    --top-user-icon-url: url('./top-user.png');
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+    --color-sent-bubble-light: #007bff; /* Light mode color for sent bubbles */
+    --color-received-bubble-light: #e0e0e0; /* Light mode color for received bubbles */
+    --color-sent-bubble-dark: #1E90FF; /* Dark mode color for sent bubbles */
+    --color-received-bubble-dark: #000000; /* Dark mode color for received bubbles */
+    --color-bubble-text-light: #000; /* Light mode text color for bubbles */
+    --color-bubble-text-dark: #fff; /* Dark mode text color for bubbles */
+}
+* {
+    font-family: var(--font-family);
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text);
+    background-image: var(--light-bg-image);
+    background-size: contain;
+    background-position: center;
+    transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+    width: 100%; /* Ensure body takes full width */  padding-bottom: var(--input-height); /* Reserve space at the bottom for the input container */
+}
+
+
+#chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%; /* Ensure chat container takes full width */
+}
+
+
+#message-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-light-border) transparent;
+}
+
+#input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.056);
+    position: fixed; /* Change to fixed positioning */
+    bottom: 0;
+    width: 95vw; /* Ensure it takes the full width */
+    z-index: 1000; /* Make sure it's above other elements */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid var(--color-light-border);
+    border-radius: 20px;
+    background-color: var(--color-light-chat-bg);
+    color: var(--color-light-text);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+#message-input::placeholder {
+    color: var(--color-placeholder-light);
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: var(--color-send-button);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#send-button:hover {
+    background-color: var(--color-send-button-hover);
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.message-sent {
+    align-items: flex-end;
+    margin-left: auto; /* Align sent messages to the right */
+    text-align: right; /* Align text to the right */
+}
+
+.message-received {
+    align-items: flex-start;
+    margin-right: auto; /* Align received messages to the left */
+    text-align: left; /* Align text to the left */
+}
+
+.message .username {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--color-placeholder-dark);
+}
+
+.message .bubble {
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 120px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--color-bubble-text-light); /* Default text color for light mode */
+}
+
+.message-sent .bubble {
+    background-color: var(--color-sent-bubble-light); /* Default sent bubble color for light mode */
+    border-bottom-right-radius: 0; /* Shape adjustment */
+}
+
+.message-received .bubble {
+    background-color: var(--color-received-bubble-light); /* Default received bubble color for light mode */
+    border-bottom-left-radius: 0; /* Shape adjustment */
+}
+
+.message .bubble .timestamp {
+    font-size: 0.8em; /* Smaller font size for timestamp */
+    color: var(--color-placeholder-dark);
+    margin-top: 5px; /* Space above timestamp */
+    display: block;
+}
+
+.error-message {
+    padding: 10px;
+    margin: 5px 0;
+    
+    background-color: var(--color-error-bg);
+    color: var(--color-error-text);
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+@media (max-width: 480px) {
+    #chat-container {
+        width: 100vw; /* Ensure chat container takes full width */
+    }
+    
+    #message-input {
+        font-size: 14px;
+    }
+
+    #send-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .message .bubble {
+        font-size: 12px;
+        max-width: 80%;
+    }
+}
+
+.dark-mode {
+    --color-light-bg: var(--color-dark-bg);
+    --color-light-text: var(--color-dark-text);
+    --color-light-chat-bg: var(--color-dark-chat-bg);
+    --color-light-border: var(--color-dark-border);
+    --color-placeholder-light: var(--color-placeholder-dark);
+    --color-send-button: #1E90FF; /* Adjust send button color for dark mode */
+    --color-send-button-hover: #4682B4; /* Adjust send button hover color for dark mode */
+    --color-error-bg: #333; /* Darker background for error messages */
+    --color-error-text: #f8d7da; /* Light color for error text */
+    --color-sent-bubble-light: var(--color-sent-bubble-dark); /* Override sent bubble color for dark mode */
+    --color-received-bubble-light: var(--color-received-bubble-dark); /* Override received bubble color for dark mode */
+    --color-bubble-text-light: var(--color-bubble-text-dark); /* Override text color for dark mode */
+}
+
+.dark-mode body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+    background-image: var(--dark-bg-image);
+}
+
+.dark-mode .message .username {
+    color: #fff; /* Set username color to white in dark mode */
+}
+
+.top-user-bubble {
+    background-color: var(--color-top-user); /* Use the top user color */
+    border: 2px solid #FFAA00;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    color: var(--color-top-user-bubble-text) !important; /* Ensure text color is always readable */
+    font-weight: bold;
+    position: relative;
+}
+
+.top-user-bubble::after {
+    content: '👑'; /* Crown emoji */
+    position: absolute;
+    top: -15px;
+    right: -11px;
+    font-size: 20px;
+}
+
+.message-sent .top-user-bubble {
+    background-color: var(--color-top-user);
+    border-color: #FFAA00;
+}
+
+.message-received .top-user-bubble {
+    background-color: var(--color-top-user);
+    border-color: #FFAA00;
+}
+
+.username.top-user-username {
+    color: var(--color-top-user-text) !important; /* Use the new color variable */
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.user-container {
+    position: relative;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid var(--color-light-border);
+    background-image: var(--user-icon-url); /* Default icon */
+}
+
+.top-user-icon {
+    background-image: var(--top-user-icon-url) !important; /* Top user icon */
+}
+#send-button {
+    padding: 10px; /* Adjust padding for icon size */
+    background-color: var(--color-send-button);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Adjust font size to fit the icon */
+}
+
+#send-button:hover {
+    background-color: var(--color-send-button-hover);
+}
+
+#send-button i {
+    margin: 0; /* Remove any default margin or padding */
+    font-size: 18px; /* Ensure the icon size is appropriate */
+}
+
+.dark-mode #send-button {
+    background-color: var(--color-send-button);
+}
+
+.dark-mode #send-button:hover {
+    background-color: var(--color-send-button-hover);
+}
+
+.mention {
+    color: rgb(42, 221, 23);
+    font-weight: bold;
+}
+.dark-mode .mention {
+    color: yellow !important;
+    color: #fff; /* Text color for dark mode mention */
+}

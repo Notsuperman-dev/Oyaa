@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Groups</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/funRooms/MyGroup.css">
+    <script src="../js/general/common.js"></script>
+</head>
+<body>
+    <header>
+        <h1>My Groups</h1>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search groups by name">
+            <button type="submit">  <i class="fas fa-search"></i></button>
+        </form>
+    </header>
+    <main id="myGroupsContainer"></main>
+
+    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+        Loading more groups...
+    </div>
+    <div id="noMoreGroupsMessage" class="no-more-groups-message" style="display: none;">
+        No more groups to load.
+    </div>
+    <img id="loadingLogo" src="../html/auth/logo.png" alt="Loading" class="loading-logo" style="display: none;">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../js/funRooms/MyGroups.js"></script>
+</body>
+</html>

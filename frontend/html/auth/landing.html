@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyaa - Landing Page</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/auth/landing.css">
+    <link rel="stylesheet" href="../css/auth/pop-up.css">
+    <script src="../js/general/common.js" defer></script> <!-- Load common.js before other scripts -->
+    <script src="../js/auth/landing.js" defer></script> <!-- Load landing.js after other scripts -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../html/auth/logo.png" alt="Oyaa Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" id="signInBtn" class="sign-in">Sign In</a>
+                <a href="#" id="signUpBtn" class="sign-up">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Oyaa</h1>
+            <p>Your one-stop solution for seamless communication</p>
+            <a href="#" class="cta-button" id="getStartedBtn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Oyaa?</h2>
+        <div class="feature">
+            <h3>Connect with Friends</h3>
+            <p>Easily connect with friends and join various chat rooms.</p>
+        </div>
+        <div class="feature">
+            <h3>Stay Updated</h3>
+            <p>Stay updated with the latest trends and happenings.</p>
+        </div>
+        <div class="feature">
+            <h3>Easy to Use</h3>
+            <p>Our user-friendly interface makes navigation and usage simple and intuitive.</p>
+        </div>
+    </section>
+
+    <!-- Overlay for Pop-Up Menu -->
+    <div id="popupOverlay" class="popup-overlay"></div>
+
+    <!-- Pop-up Menu -->
+    <div id="popupMenu" class="popup-menu">
+        <h2>Welcome</h2>
+        <p>Sign in or sign up to get into the loop.</p>
+        <button id="popupSignInBtn" class="popup-button">Sign In</button>
+        <button id="popupSignUpBtn" class="popup-button">Sign Up</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>© Workings of Cane. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="#" id="termsOfServiceLink">Terms of Service</a>
+                <a href="#" id="contactUsLink">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Pop-ups -->
+    <div id="privacyPolicyPopup" class="popup">
+        <!-- Content will be loaded dynamically -->
+    </div>
+    <div id="termsOfServicePopup" class="popup">
+        <!-- Content will be loaded dynamically -->
+    </div>
+    <div id="contactUsPopup" class="popup">
+        <!-- Content will be loaded dynamically -->
+    </div>
+
+    <script src="../js/auth/pop-up.js" defer></script>
+</body>
+</html>

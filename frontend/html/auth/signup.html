@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyaa - Sign Up</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/auth/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/auth/pop-up.css">
+    <script src="../js/general/common.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="../html/auth/logo.png" alt="Oyaa Logo">
+            </div>
+            <div class="login-header">
+                <h1>Sign Up</h1>
+                <p>By continuing, you agree to our <a href="#" id="termsOfServiceLink">Terms of Service</a> and acknowledge that you understand the <a href="#" id="privacyPolicyLink">Privacy Policy</a>.</p>
+            </div>
+            <form id="signUpForm">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <span class="required"></span>
+                </div>
+                <div class="input-group password-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="required"></span>
+                    <i class="fas fa-eye-slash" id="togglePassword"></i>
+                </div>
+                <div id="alert" class="alert"></div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+            <div class="footer">
+                <p>Already have an account? <a href="signin">Sign In</a></p>
+            </div>
+        </div>
+        
+        <!-- Overlay for Pop-Up Menu -->
+        <div id="popupOverlay" class="popup-overlay"></div>
+        <!-- Pop-ups -->
+        <div id="privacyPolicyPopup" class="popup">
+            <!-- Content will be loaded dynamically -->
+        </div>
+        <div id="termsOfServicePopup" class="popup">
+            <!-- Content will be loaded dynamically -->
+        </div>
+        <div id="contactUsPopup" class="popup">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+    <script src="../js/auth/signup.js"></script>
+    <script src="../js/auth/pop-up.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklist</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/settings/blacklist.css">
+    <script src="../js/general/common.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Blacklist</h1>
+        <ul id="blacklist-container"></ul>
+    </div>
+
+    <!-- Modal -->
+    <div id="reporter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reporters for <span id="modal-username"></span></h2>
+                <span class="close" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul id="reporter-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/settings/blacklists.js"></script>
+</body>
+</html>

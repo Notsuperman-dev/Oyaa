@@ -1,0 +1,132 @@
+/* Popup Menu */
+.popup-menu {
+    position: absolute;
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+/* Popup Menu Links */
+.popup-menu a {
+    text-decoration: none;
+    color: inherit;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition);
+}
+
+.popup-menu a:hover {
+    background-color: var(--hover-color-light);
+}
+
+/* Dark Mode Adjustments */
+.dark-mode .popup-menu {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.dark-mode .popup-menu a:hover {
+    background-color: var(--hover-color-dark);
+}
+
+/* Specific Menu Styles */
+.settings-menu,
+.user-menu {
+    right: 20px;
+    top: 60px;
+}
+
+.fun-room-menu {
+    left: 20px;
+    top: 60px;
+}
+
+/* Toggle Switch CSS */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 35px;
+    margin: 12px 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1c1c1c;
+    transition: background-color 0.4s, transform 0.4s;
+    border-radius: 35px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #f8f8f8;
+    transition: transform 0.4s, background-color 0.4s;
+    border-radius: 50%;
+}
+
+.sun-icon, .moon-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    transition: opacity 0.4s, color 0.4s;
+}
+
+.sun-icon {
+    left: 10px;
+    color: #FFA500;
+}
+
+.moon-icon {
+    right: 10px;
+    color: #202a35;
+    opacity: 0;
+}
+
+input:checked + .slider {
+    background-color: #1d7dd0;
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+input:checked + .slider .sun-icon {
+    opacity: 0;
+}
+
+input:checked + .slider .moon-icon {
+    opacity: 1;
+}
+
+/* Dark Mode Toggle Switch Adjustments */
+.dark-mode .slider {
+    background-color: #1e272b;
+}
+
+.dark-mode input:checked + .slider {
+    background-color: #ecf0f4;
+}

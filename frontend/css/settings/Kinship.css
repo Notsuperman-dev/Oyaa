@@ -1,0 +1,255 @@
+/* Root Variables */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --primary-color: #1c1c1c;
+    --background-color: #0a0a0a;
+    --accent-color: #00aaff;
+    --button-hover-color: #007acc;
+    --text-color: #ffffff;
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --card-background: #121212;
+    --card-border: #333333;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --small-font-size: 0.8em;
+    --medium-font-size: 1em;
+    --large-font-size: 1.2em;
+    --x-large-font-size: 1.5em;
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+* {
+    font-family: var(--font-family);
+}
+/* Light Mode Styles */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-image: var(--light-bg-image);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --card-background: #1a1a1a;
+    --card-border: #333333;
+    --accent-color: #00aaff;
+    --button-hover-color: #007acc;
+    --light-bg-image: url('/images/darkBG.jpg');
+}
+
+.dark-mode body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    background-image: var(--dark-bg-image);
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color);
+    position: relative; /* Position relative for logo positioning */
+}
+
+/* Logo Container */
+.logo-container {
+    position: absolute;
+    top: 1px;
+}
+
+.logo {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Header Title */
+.header-title {
+    font-size: var(--x-large-font-size);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.header-subtitle {
+    font-size: var(--medium-font-size);
+    color: #bbbbbb;
+}
+
+/* Subscription Container */
+.subscription-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Subscription Card */
+.subscription-card {
+    background: linear-gradient(145deg, #1a1a1a, #121212);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--card-border);
+    transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.subscription-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    background-color: #1e1e1e;
+}
+
+/* Subscription Type */
+.subscription-type {
+    font-size: var(--large-font-size);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Subscription Price */
+.subscription-price {
+    font-size: var(--x-large-font-size);
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+/* Subscription Details */
+.subscription-details {
+    font-size: var(--small-font-size);
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+/* Subscription Features List */
+.subscription-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.subscription-features li {
+    position: relative;
+    padding-left: 2em; /* Adds space for the bullet */
+    margin-bottom: 12px; /* Adds space between list items */
+    font-size: var(--medium-font-size);
+    color: #dddddd; /* Light text color for contrast */
+}
+
+.subscription-features li::before {
+    content: '✔'; /* Use checkmark symbol for list items */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color); /* Accent color for the checkmark */
+    font-size: 1.3em; /* Adjust size of the checkmark */
+    line-height: 1.6; /* Aligns the checkmark with the text */
+}
+
+/* Subscription Form */
+.subscription-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Subscription Input */
+.subscription-input {
+    padding: 14px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--card-border);
+    font-size: var(--medium-font-size);
+    background-color: #2e2e2e;
+    color: var(--text-color);
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.subscription-input:focus {
+    background-color: #333333;
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Subscription Button */
+.subscription-button {
+    background: linear-gradient(135deg, var(--accent-color), #0088cc);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 14px 20px;
+    font-size: var(--medium-font-size);
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subscription-button:hover {
+    background: linear-gradient(135deg, #007acc, var(--accent-color));
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.subscription-button:active {
+    background: linear-gradient(135deg, #006bb3, #007acc);
+    transform: scale(0.95);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay Styling */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.7em;
+    font-weight: bold;
+    pointer-events: auto;
+    transition: opacity var(--transition);
+}
+
+.coming-soon {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn var(--transition) ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Disable interactions with the rest of the page */
+body {
+    pointer-events: none;
+}
+
+body > *:not(.overlay) {
+    pointer-events: none;
+}

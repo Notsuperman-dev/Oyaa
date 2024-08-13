@@ -1,0 +1,640 @@
+/* Define CSS variables for both light and dark themes */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f4f4f4;
+    --text-color: #333;
+    --container-background: #ffffff;
+    --primary-color: #007bff;
+    --primary-hover-color: #0056b3;
+    --header-background: #ffffff;
+    --footer-background: #aaaab1;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --popup-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --logo-height: 2.5rem; /* Adjust for a balanced look */
+    --transition-speed: 0.3s; /* Uniform transition speed */
+    --border-radius: 0.5rem; /* Consistent border radius */
+    --button-padding: 0.5rem 1rem; /* Consistent button padding */
+}
+* {
+    font-family: var(--font-family);
+}
+
+/* General body styles */
+body {
+    font-family: var(--font-family);
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: var(--header-background);
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: var(--box-shadow);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: var(--logo-height);
+    transition: height var(--transition-speed) ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Sign In and Sign Up Buttons */
+.nav-links .sign-in,
+.nav-links .sign-up {
+    padding: var(--button-padding);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sign In Button */
+.nav-links .sign-in {
+    background-color: var(--primary-color);
+}
+
+.nav-links .sign-in:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.125rem);
+}
+
+/* Sign Up Button */
+.nav-links .sign-up {
+    background-color: #28a745;
+}
+
+.nav-links .sign-up:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.125rem);
+}
+
+/* Hero Section */
+.hero {
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    background-image: url('../images/cover-photo pc.jpg');
+    background-color: #003d7a;
+    background-blend-mode: overlay;
+  
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+/* Hero Content */
+.hero-content {
+    max-width: 70%; /* Ensure content uses at least 70% of the available space */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.hero h1 {
+    font-size: 10rem; /* Increase font size */
+    margin-bottom: 1.5rem; /* Increase spacing */
+    margin-top: 0px;
+}
+
+.hero p {
+    font-size: 1.5rem; /* Increase font size */
+    margin-bottom: 2rem; /* Increase spacing */
+    margin-top: 30px;
+}
+
+
+
+/* CTA Button in Hero */
+.hero .cta-button {
+    padding: 1rem 1.5rem; /* Increase padding */
+    font-size: 1.25rem; /* Increase font size */
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    color: #fff;
+    text-decoration: none;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero .cta-button:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* General CTA Button Styles */
+.cta-button {
+    padding: 1rem 1.5rem; /* Increase padding */
+    font-size: 1.25rem; /* Increase font size */
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Features Section */
+.features {
+    padding: 2rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+    max-width: 1000px;
+    margin: 0rem auto; /* Centered with margin */
+    box-shadow: var(--box-shadow);
+   
+}
+
+/* Heading */
+.features h2 {
+    font-size: 1.75rem;
+    color: var(--text-color);
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+/* Feature Boxes */
+.feature {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.feature:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature Heading */
+.feature h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Feature Paragraph */
+.feature p {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* Footer Section */
+footer {
+    background-color: var(--footer-background); /* Customize the color */
+    padding: 0.6rem; /* Increased padding for more space */
+    text-align: center; /* Center align text */
+  
+    color: var(--footer-text-color); /* Customize text color */
+}
+
+/* Footer Content */
+.footer-content {
+    max-width: 1200px; /* Centered content width */
+    margin: 0 auto; /* Center align content */
+    padding: 0 1rem; /* Add horizontal padding */
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 1rem; /* Space above the links */
+}
+
+.footer-links a {
+    color: var(--footer-link-color); /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin: 0 0.5rem; /* Horizontal spacing between links */
+    font-size: 0.875rem; /* Font size for readability */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Pop-up Menu */
+.popup-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--container-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    box-shadow: var(--popup-shadow);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 20rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.popup-menu h2 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.popup-menu p {
+    margin: 0 0 1rem;
+    text-align: center;
+    color: #5a5a5a;
+}
+
+.popup-button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.popup-button:last-child {
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+}
+
+.popup-button:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup-button:last-child:hover {
+    background-color: #e9ecef;
+}
+
+/* Pop-up Links */
+.popup-link {
+    margin-top: 0.5rem;
+    color: #5a5a5a;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.popup-link:hover {
+    color: var(--primary-hover-color);
+}
+
+/* Overlay for Pop-Up Menu */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+/* Display Pop-Up Menu */
+.popup-menu.active,
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Styling */
+@media (max-width: 767px) {
+    .logo img {
+        height: calc(var(--logo-height) * 0.75); /* Slightly reduced logo size */
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-links .sign-in,
+    .nav-links .sign-up {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .hero {
+        background-image: url('../images/cover-photo phone.jpg');
+    
+    }
+
+    .hero h1 {
+        font-size: 5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .features {
+        padding: 1.5rem; /* Adjusted padding */
+    }
+
+    .cta-button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .feature h3 {
+        font-size: 1.2rem;
+    }
+
+    .feature p {
+        font-size: 0.875rem;
+    }
+
+    .popup-menu {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .popup-button {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+
+/* Dark Mode */
+.dark-mode {
+    --body-background-color: #000000;
+    --text-color: #e0e0e0;
+    --container-background: #1e1e1e;
+    --primary-color: #d6dbf6;
+    --primary-hover-color: #d0c3f4;
+    --header-background: #000000;
+    --footer-background: #000000;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --popup-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    --transition-speed: 0.3s;
+    --border-radius: 0.5rem; /* Consistent border radius */
+    --button-padding: 0.5rem 1rem; /* Consistent padding */
+    --logo-height: 2.5rem; /* Keep consistent with light mode */
+}
+
+/* General Body Styles */
+.dark-mode body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Header */
+.dark-mode header {
+    background-color: var(--header-background);
+    border-bottom: 1px solid #333;
+    padding: 1rem; /* Add padding for better spacing */
+}
+
+/* Navbar Links (Buttons) */
+.dark-mode .navbar .nav-links a {
+    font-size: 0.875rem; /* Slightly larger font size for readability */
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    padding: var(--button-padding);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Sign In Button */
+.dark-mode .navbar .nav-links .sign-in {
+    background-color: #b3b3b3;
+    color: #000;
+}
+
+.dark-mode .navbar .nav-links .sign-in:hover {
+    background-color: #999;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.125rem);
+}
+
+/* Sign Up Button */
+.dark-mode .navbar .nav-links .sign-up {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.dark-mode .navbar .nav-links .sign-up:hover {
+    background-color: #388e3c;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.125rem);
+}
+
+/* Hero Section */
+.dark-mode .hero {
+    color: var(--primary-color);
+
+    background-color: #191919; /* Darker background color for dark mode */
+    text-align: center; /* Center align text */
+}
+
+
+/* CTA Button */
+.dark-mode .cta-button {
+    background-color: var(--primary-color);
+    color: #000;
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.dark-mode .cta-button:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Features Section */
+.dark-mode .features {
+    color: var(--text-color);
+    padding: 2rem 1rem; /* Add padding for spacing */
+}
+
+/* Feature Boxes */
+.dark-mode .feature {
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1rem; /* Add margin for spacing */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.dark-mode .feature:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Feature Heading */
+.dark-mode .feature h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem; /* Add margin for spacing */
+}
+
+/* Feature Paragraph */
+.dark-mode .feature p {
+    color: var(--text-color);
+}
+
+/* Dark Mode Footer */
+.dark-mode footer {
+    background-color: var(--footer-dark-background); /* Dark background color */
+  
+    color: var(--footer-dark-text-color); /* Dark mode text color */
+}
+
+.dark-mode .footer-links a {
+    color: var(--footer-dark-link-color); /* Dark mode link color */
+}
+
+/* Pop-up Menu */
+.dark-mode .popup-menu {
+    background-color: var(--container-background);
+    box-shadow: var(--popup-shadow);
+    border-radius: var(--border-radius);
+    padding: 1rem; /* Add padding for spacing */
+}
+
+.dark-mode .popup-menu h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem; /* Add margin for spacing */
+}
+
+.dark-mode .popup-menu p {
+    color: #b0b0b0;
+}
+
+/* Pop-up Buttons */
+.dark-mode .popup-button {
+    background-color: var(--primary-color);
+    color: #000;
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+    margin-right: 0.5rem; /* Add margin for spacing */
+    border: none;
+}
+
+.dark-mode .popup-button:last-child {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+.dark-mode .popup-button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.dark-mode .popup-button:last-child:hover {
+    background-color: #444;
+}
+
+/* Pop-up Links */
+.dark-mode .popup-link {
+    color: #b0b0b0;
+}
+
+.dark-mode .popup-link:hover {
+    color: var(--primary-hover-color);
+}
+
+/* Overlay for Pop-Up Menu */
+.dark-mode .popup-overlay {
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker overlay */
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+
+/* Scrollbar Track */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Color of the scrollbar thumb */
+    border-radius: var(--border-radius); /* Rounded corners for the scrollbar thumb */
+    transition: background-color var(--transition-speed) ease; /* Smooth transition */
+}
+
+/* Scrollbar Thumb Hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color); /* Color on hover */
+}
+
+/* Scrollbar Track (Optional) */
+::-webkit-scrollbar-track {
+    background-color: var(--body-background-color); /* Color of the track (space around the thumb) */
+    border-radius: var(--border-radius); /* Rounded corners for the track */
+}
+/* Dark Mode Custom Scrollbar */
+
+/* Scrollbar Track */
+.dark-mode ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb */
+.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Color of the scrollbar thumb */
+    border-radius: var(--border-radius); /* Rounded corners for the scrollbar thumb */
+    transition: background-color var(--transition-speed) ease; /* Smooth transition */
+}
+
+/* Scrollbar Thumb Hover */
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color); /* Color on hover */
+}
+
+/* Scrollbar Track (Optional) */
+.dark-mode ::-webkit-scrollbar-track {
+    background-color: var(--container-background); /* Color of the track (space around the thumb) */
+    border-radius: var(--border-radius); /* Rounded corners for the track */
+}

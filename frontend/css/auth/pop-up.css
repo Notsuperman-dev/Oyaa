@@ -1,0 +1,189 @@
+/* Pop-up General Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--container-background, #fff);
+    padding: 2rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Adjust padding and max-width for smaller screens */
+@media (max-width: 768px) {
+    .popup {
+        padding: 1.5rem;
+        max-width: 85vw;
+        max-height: 85vh;
+    }
+    
+    .popup-content h2 {
+        font-size: 1.25rem; /* Reduce font size */
+    }
+
+    .popup-content h3 {
+        font-size: 1.1rem; /* Reduce font size */
+    }
+
+    .popup-content p {
+        font-size: 0.875rem !important;  /* Reduce font size */
+    }
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.popup-content h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--heading-color, #333);
+    font-weight: 600;
+}
+
+.popup-content h3 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--heading-color, #555);
+    font-weight: 500;
+}
+
+.popup-content p {
+    margin: 0 0 1.5rem;
+    text-align: center;
+    color: var(--text-color, #666);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.popup-content a {
+    color: var(--link-color, #007bff);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.popup-content a:hover {
+    text-decoration: underline;
+}
+
+/* Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Active State */
+.popup.active,
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+
+/* Scrollbar Track */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Color of the scrollbar thumb */
+    border-radius: var(--border-radius); /* Rounded corners for the scrollbar thumb */
+    transition: background-color var(--transition-speed) ease; /* Smooth transition */
+}
+
+/* Scrollbar Thumb Hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color); /* Color on hover */
+}
+
+/* Scrollbar Track (Optional) */
+::-webkit-scrollbar-track {
+    background-color: var(--body-background-color); /* Color of the track (space around the thumb) */
+    border-radius: var(--border-radius); /* Rounded corners for the track */
+}
+
+/* Dark Mode Custom Scrollbar */
+
+/* Scrollbar Track */
+.dark-mode ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb */
+.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Color of the scrollbar thumb */
+    border-radius: var(--border-radius); /* Rounded corners for the scrollbar thumb */
+    transition: background-color var(--transition-speed) ease; /* Smooth transition */
+}
+
+/* Scrollbar Thumb Hover */
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color); /* Color on hover */
+}
+
+/* Scrollbar Track (Optional) */
+.dark-mode ::-webkit-scrollbar-track {
+    background-color: var(--container-background); /* Color of the track (space around the thumb) */
+    border-radius: var(--border-radius); /* Rounded corners for the track */
+}
+:root {
+    --button-background: #007bff; /* Default button background color (light mode) */
+    --button-text-color: #fff; /* Default button text color (light mode) */
+    --button-hover-background: #0056b3; /* Default button hover background color (light mode) */
+    --button-hover-text-color: #fff; /* Default button hover text color (light mode) */
+    --button-border-radius: 5px; /* Default button border radius */
+    --transition-duration: 0.3s; /* Default transition duration */
+}
+
+/* Dark mode adjustments */
+.dark-mode {
+    --button-background: #333; /* Dark mode button background color */
+    --button-text-color: #fff; /* Dark mode button text color */
+    --button-hover-background: #555; /* Dark mode button hover background color */
+    --button-hover-text-color: #fff; /* Dark mode button hover text color */
+}
+
+/* Close button styling */
+.close-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    width: 100%;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Close button hover state */
+.close-btn:hover {
+    background-color: var(--button-hover-background);
+    color: var(--button-hover-text-color);
+}

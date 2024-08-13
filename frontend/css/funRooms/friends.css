@@ -1,0 +1,131 @@
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f0f2f5;
+    --text-color: #000;
+    --header-background: #ffffff1d;
+    --header-text-color: #000;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --button-active-background: #004080;
+    --button-text-color: #fff;
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    background-image: var(--light-bg-image);
+    background-size: contain;
+    background-position: center;
+    transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--header-background);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--header-text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.friends-container {
+    width: 90vw;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+#added-users-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Styling for the "No added users." message */
+#added-users-list p {
+    padding: 15px;
+    margin: 0;
+    
+    color: #910816;
+  
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.added-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ccc;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.remove-friend {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remove-friend:hover {
+    background-color: var(--button-hover-background);
+}
+
+.remove-friend:active {
+    background-color: var(--button-active-background);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --body-background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-background: #22222254;
+    --button-background: #000000;
+    --button-hover-background: #636363;
+    --button-active-background: #004080;
+}
+
+.dark-mode body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    background-image: var(--dark-bg-image);
+}
+
+.dark-mode header h1 {
+    color: #f0f0f0;
+}
+
+@media (max-width: 767px) {
+    header {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .friends-container {
+        width: 95vw;
+    }
+}

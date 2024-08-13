@@ -1,0 +1,128 @@
+/* Define CSS variables for both light and dark themes */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f0f2f5;
+    --text-color: #000;
+    --header-text-color: #000;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --user-background: #cccccc4b;
+    --user-border-color: #999;
+    --user-text-color: #000;
+    --container-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --unblock-user-background: #ff4d4d;
+    --unblock-user-hover-background: #ff1a1a;
+    
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+/* General styles */
+* {
+    font-family: var(--font-family);
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    background-image: var(--light-bg-image);
+    background-size: contain;
+    background-position: center;
+    transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s;
+}
+
+#blocked-users-container {
+    background-color: var(--user-background);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: var(--container-shadow);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--header-text-color);
+}
+
+#blocked-users-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blocked-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--user-background);
+    border: 1px solid var(--user-border-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: var(--user-text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blocked-user:hover {
+    background-color: #bbb;
+}
+
+.unblock-user {
+    background-color: var(--unblock-user-background);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.unblock-user:hover {
+    background-color: var(--unblock-user-hover-background);
+}
+
+/* Dark mode styles */
+.dark-mode {
+    --body-background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-text-color: #e0e0e0;
+    --user-background: #1e1e1e4a;
+    --user-border-color: #333;
+    --user-text-color: #b0b0b0;
+    --container-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --unblock-user-background: #ff4d4d;
+    --unblock-user-hover-background: #ff1a1a;
+    
+    --background-image: var(--dark-bg-image);
+}
+
+.dark-mode body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    background-image: var(--background-image);
+}
+
+.dark-mode #blocked-users-container {
+    background: var(--user-background);
+    box-shadow: var(--container-shadow);
+}
+
+.dark-mode .blocked-user {
+    border: 1px solid var(--user-border-color);
+    background: var(--user-background);
+    color: var(--user-text-color);
+}
+
+.dark-mode .unblock-user {
+    background-color: var(--unblock-user-background);
+}
+
+.dark-mode .unblock-user:hover {
+    background-color: var(--unblock-user-hover-background);
+}

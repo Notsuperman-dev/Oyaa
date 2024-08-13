@@ -1,0 +1,15 @@
+/* Attachment Button */
+/* Icon Button Styles */
+.icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 20px; /* Adjust icon size */
+    color: var(--text-color);
+}
+
+.icon-button:hover {
+    color: var(--button-hover-background); /* Change color on hover */
+}

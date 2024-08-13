@@ -1,0 +1,96 @@
+/* User Icon */
+.user-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    background-size: cover;
+    background-image: var(--user-icon-url);
+    margin-right: 8px;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
+}
+
+/* User Popup */
+.user-popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid var(--color-light-border); /* Inherits from pop-wc2.css */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Inherits from pop-wc2.css */
+    width: 160px; /* Inherits from pop-wc2.css */
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+    top: 100%;
+    left: 0;
+    transform: translateY(10px);
+}
+
+/* Ensure popup is visible */
+.user-popup.visible {
+    display: block;
+}
+
+.user-popup .username-display {
+    font-weight: bold; /* Inherits from pop-wc2.css */
+    margin-bottom: 8px; /* Inherits from pop-wc2.css */
+    width: 100%;
+    text-align: center; /* Inherits from pop-wc2.css */
+    border-bottom: 1px solid var(--color-light-border); /* Inherits from pop-wc2.css */
+    padding-bottom: 8px; /* Inherits from pop-wc2.css */
+}
+
+.user-popup div {
+    padding: 12px; /* Inherits from pop-wc2.css */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.user-popup div:hover {
+    background-color: var(--color-light-border); /* Inherits from pop-wc2.css */
+}
+
+.user-popup .option-icon {
+    margin-right: 8px; /* Inherits from pop-wc2.css */
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    max-width: 90vw;
+    box-sizing: border-box;
+}
+
+/* Show notification */
+.notification.visible {
+    opacity: 1;
+}
+
+/* Dark mode styles */
+.dark-mode .user-popup {
+    background-color: var(--color-dark-chat-bg); /* Inherits from pop-wc2.css */
+    border: 1px solid var(--color-dark-border); /* Inherits from pop-wc2.css */
+    color: var(--color-dark-text); /* Inherits from pop-wc2.css */
+}
+
+.dark-mode .user-popup div:hover {
+    background-color: var(--color-dark-border); /* Inherits from pop-wc2.css */
+}

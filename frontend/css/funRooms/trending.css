@@ -1,0 +1,324 @@
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f0f2f5;
+    --text-color: #000;
+    --header-text-color: #000;
+    --input-background: #fff;
+    --input-border-color: #ccc;
+    --input-focus-border-color: #007BFF;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --button-active-background: #004080;
+    --button-text-color: #fff;
+    --room-background: #ccc;
+    --room-border-color: #999;
+    --room-text-color: #000;
+    --online-indicator: #28a745;
+    --description-color: #fff;
+
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text);
+    background-image: var(--light-bg-image);
+    background-size: contain;
+    background-position: center;
+    transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+    width: 100%; /* Ensure body takes full width */
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--header-background, #ffffff1d); /* Default or theme-based background */
+  
+}
+
+header h1 {
+    margin: 0;
+    color: var(--header-text-color, #333);
+    font-size: 2.5rem; /* Larger font size for better readability */
+    text-align: center;
+    font-weight: 700; /* Bold font weight */
+    transition: color 0.3s;
+}
+
+/* Search Form Styles */
+#searchForm {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#searchForm:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--input-border-color, #ccc);
+    border-radius: 8px 0 0 8px;
+    background-color: var(--input-background, #fff);
+    color: var(--text-color, #333);
+    transition: border-color 0.3s, background-color 0.3s;
+    font-size: 1rem;
+    outline: none;
+}
+
+#searchInput::placeholder {
+    color: #aaa;
+}
+
+#searchInput:focus {
+    border-color: var(--input-focus-border-color, #007bff);
+    background-color: var(--input-focus-background, #f9f9f9);
+}
+
+#searchForm button {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--button-background, #007bff);
+    color: var(--button-text-color, #fff);
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#searchForm button:hover {
+    background-color: var(--button-hover-background, #0056b3);
+}
+
+#searchForm button:active {
+    background-color: var(--button-active-background, #004080);
+    transform: scale(0.98);
+}
+
+
+#roomsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90vw;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 100px; /* Add extra padding to ensure scrollability */
+}
+
+.room {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto 1fr;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--room-background);
+    border: 1px solid var(--room-border-color);
+    border-radius: 5px;
+    color: var(--room-text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.room:hover {
+    background-color: #bbb;
+    transform: translateY(-2px);
+}
+
+.room:active {
+    background-color: #aaa;
+    transform: translateY(0);
+}
+
+.room .rank {
+    font-size: 1.5rem; /* Larger font size for larger screens */
+    margin-right: 10px;
+}
+
+.room .name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.room .users {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.room .users .online-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: var(--online-indicator); /* Default green */
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.room .description {
+    color: var(--description-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --body-background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-text-color: #e0e0e0;
+    --input-background: #333;
+    --input-border-color: #555;
+    --input-focus-border-color: #007BFF;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --button-active-background: #004080;
+    --button-text-color: #fff;
+    --room-background: #1e1e1e;
+    --room-border-color: #333;
+    --room-text-color: #ffffff;
+    --description-color: #aaa;
+    --background-image: var(--dark-bg-image);
+}
+
+.dark-mode body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    background-image: var(--background-image);
+}
+
+.dark-mode header {
+    background-color: #22222254;
+ 
+}
+
+.dark-mode header h1 {
+    color: #f0f0f0;
+}
+
+.dark-mode #searchForm {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.dark-mode #searchInput {
+    background-color: #555;
+    border-color: #666;
+    color: #f0f0f0;
+}
+
+.dark-mode #searchInput::placeholder {
+    color: #bbb;
+}
+
+.dark-mode #searchInput:focus {
+    border-color: #494a4b;
+    background-color: #666;
+}
+
+.dark-mode #searchForm button {
+    background-color: #000000;
+    color: #fff;
+}
+
+.dark-mode #searchForm button:hover {
+    background-color: #918c8c;
+}
+
+.dark-mode #searchForm button:active {
+    background-color: #004080;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 767px) {
+    header {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+    
+    header h1 {
+        font-size: 1.5rem; /* Smaller font size for mobile screens */
+    }
+
+    #searchForm {
+        width: 90vw; /* Adjusted for mobile devices */
+        max-width: none; /* Remove max-width to fit viewport width */
+    }
+
+    #searchInput {
+        font-size: 0.875rem; /* Smaller font size for mobile screens */
+    }
+
+    .room .rank {
+        font-size: 1.25rem; /* Smaller font size for mobile screens */
+    }
+
+    .room .name {
+        font-size: 0.875rem; /* Smaller font size for mobile screens */
+    }
+}
+
+.loading-indicator, .no-more-rooms-message {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.loading-indicator {
+    color: #007bff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.no-more-rooms-message {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+.loading-logo {
+    display: block;
+    width: 50%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulsate 1.5s infinite;
+}
+
+@keyframes pulsate {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+/* Accessibility Enhancements */
+#searchForm button:focus {
+    outline: 3px solid var(--button-focus-outline, #0056b3);
+    outline-offset: 2px;
+}

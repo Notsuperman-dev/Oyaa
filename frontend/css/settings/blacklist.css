@@ -1,0 +1,162 @@
+/* Define root variables for light and dark modes */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --background-light: #f0f2f5;
+    --background-dark: #121212;
+    --text-light: #000;
+    --text-dark: #e0e0e0;
+    --card-background-light: #ffffff2a;
+    --card-background-dark: #1e1e1e;
+    --card-hover-light: #e2e2e2;
+    --card-hover-dark: #444444;
+    --accent-color-light: #007BFF; /* Accent color similar to trending */
+    --accent-color-dark: #ff6f6f;
+    --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --box-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+* {
+    font-family: var(--font-family);
+}
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    background-image: var(--light-bg-image);
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--card-background-light);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    color: var(--accent-color-light);
+    margin-bottom: 20px;
+}
+
+#blacklist-container {
+    list-style: none;
+    padding: 0;
+}
+
+.blacklist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--card-hover-light);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.blacklist-item:hover {
+    background-color: #bbb;
+}
+
+.blacklist-item .rank,
+.blacklist-item .username,
+.blacklist-item .report-count {
+    flex: 1;
+    text-align: center;
+}
+
+.blacklist-item .rank {
+    font-weight: bold;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    --background-light: var(--background-dark);
+    --text-light: var(--text-dark);
+    --card-background-light: var(--card-background-dark);
+    --card-hover-light: var(--card-hover-dark);
+    --accent-color-light: var(--accent-color-dark);
+    --box-shadow-light: var(--box-shadow-dark);
+
+    --background-image: var(--dark-bg-image);
+}
+
+.dark-mode body {
+    background-color: var(--background-light);
+    color: var(--text-light);
+    background-image: var(--background-image);
+}
+
+.dark-mode .container {
+    background-color: rgba(0, 0, 0, 0.108);
+    box-shadow: var(--box-shadow-light);
+}
+
+.dark-mode h1 {
+    color: var(--accent-color-light);
+}
+
+.dark-mode .blacklist-item {
+    background-color: rgb(45, 45, 45);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .blacklist-item:hover {
+    background-color: var(--card-hover-light);
+}
+
+/* Modal styles */
+#reporter-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-header .close {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding: 0;
+}

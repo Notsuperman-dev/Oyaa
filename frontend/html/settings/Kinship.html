@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyaa - Premium Kinship</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/settings/Kinship.css">
+    <script src="../js/general/common.js"></script>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="../html/auth/logo.png" alt="Oyaa Logo" class="logo">
+    </div>
+    <header class="header">
+      
+        <h1 class="header-title">Upgrade to Premium Kinship</h1>
+        <p class="header-subtitle">Enjoy exclusive features with our Premium Kinship membership.</p>
+    </header>
+    <main class="subscription-container">
+        <div class="subscription-card">
+            <h2 class="subscription-type">Premium Kinship</h2>
+            <p class="subscription-price">N500 / month</p>
+            <p class="subscription-details">Billed annually</p>
+            <ul class="subscription-features">
+                <li>Golden chat bubble</li>
+                <li>Delete up to 100 chats in world chat</li>
+                <li>Pin chats in world chat</li>
+                <li>Protection from being reported</li>
+            </ul>
+            <form id="kinshipForm" class="subscription-form">
+                <input type="hidden" id="subscriptionType" name="subscriptionType" value="premium">
+                <input type="text" id="paymentDetails" name="paymentDetails" class="subscription-input" placeholder="Enter Payment Details" required>
+                <button type="submit" class="subscription-button">Subscribe</button>
+            </form>
+        </div>
+    </main>
+    <div class="overlay">
+        <div class="coming-soon">Coming Soon</div>
+    </div>
+    <script src="../js/settings/Kinship.js"></script>
+</body>
+</html>

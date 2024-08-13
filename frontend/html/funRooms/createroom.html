@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyaa - Create Room</title>
+    <link rel="icon" href="../images/oyaa.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/funRooms/createroom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/general/common.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="../html/auth/logo.png" alt="Oyaa Logo">
+            </div>
+            <div class="login-header">
+                <h1>Create a New Room</h1>
+              
+            </div>
+            <form id="createRoomForm">
+                <div class="input-group">
+                    <label for="name">Room Name</label>
+                    <input type="text" id="name" placeholder="Enter room name" required>
+                    <span class="required"></span>
+                    <div class="error" id="nameError"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="toggle-label" for="private">Private</label>
+                    <label class="switch">
+                        <input type="checkbox" id="private" name="private">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div class="input-group password-group" style="display: none;">
+                    <label for="password">Password (Optional)</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                    <span id="togglePassword" class="toggle-password"><i class="fas fa-eye-slash"></i></span>
+                    <span class="required"></span>
+                    <div class="error" id="passwordError"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="description">Description</label>
+                    <div id="descriptionContainer" class="description-container">
+                        <textarea id="description" placeholder="Enter room description "></textarea>
+                    </div>
+                </div>
+                <div id="alert" class="alert"></div>
+                <div id="formError" class="error"></div> <!-- Error message container -->
+                <button type="submit" class="submit-btn">Create Room</button>
+            </form>
+            <div class="footer">
+                <p>Have more fun by <a href="joinroom">joining a room</a> instead.</p>
+            </div>
+        </div>
+        
+      
+    </div>
+    
+    <script src="../js/funRooms/createroom.js"></script>
+
+</body>
+</html>

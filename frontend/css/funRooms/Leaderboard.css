@@ -1,0 +1,234 @@
+/* Define CSS variables for both light and dark themes */
+:root {
+    --font-family: 'Rubik', sans-serif;
+    --body-background-color: #f0f2f5;
+    --text-color: #000;
+    --header-text-color: #000;
+    --input-background: #ffffff57;
+    --input-border-color: #ccc;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --room-background: #ccc;
+    --room-border-color: #999;
+    --room-text-color: #000;
+    --online-indicator: #28a745;
+    --description-color: #fff;
+    --top-user-background: linear-gradient(45deg, #ffd700, #ffa500);
+    --top-user-text-color: #000;
+
+    --light-bg-image: url('/images/lightBG.jpg');
+    --dark-bg-image: url('/images/darkBG.jpg');
+}
+
+/* Base styling */
+body {
+    font-family: var(--font-family);
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    margin: 0;
+
+    background-image: var(--light-bg-image);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.063);
+    border-radius: 8px;
+}
+
+header h1 {
+    margin: 0;
+    color: var(--header-text-color, #333);
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+
+/* Top user section */
+#top-user-section {
+    position: relative;
+    background-color: var(--top-user-background);
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.top-user-row img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.top-user-row .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: var(--top-user-text-color);
+    font-size: 1em;
+    font-weight: bold;
+    padding: 8px;
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Optional: Style the likes count in the overlay for the top user */
+.overlay .likes {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin-top: 5px;
+    display: block;
+    text-align: center; /* Ensures the text is centered */
+}
+
+/* Other users section */
+#other-users-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90vw;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--room-background);
+    border: 1px solid var(--room-border-color);
+    border-radius: 5px;
+    color: var(--room-text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-bottom: 10px;
+}
+
+.user-row img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Remove border from last row */
+.user-row:last-child {
+    border-bottom: none;
+}
+
+/* Rank styling */
+.rank {
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Username styling */
+.username {
+    flex: 1;
+    padding-left: 10px;
+    color: var(--room-text-color);
+}
+
+/* Likes styling */
+.likes {
+    text-align: right;
+    width: 100px;
+    color: var(--text-color);
+}
+
+/* Hover effect for user row */
+.user-row:hover {
+    background-color: #bbb;
+    transform: translateY(-2px);
+}
+
+.user-row:active {
+    background-color: #aaa;
+    transform: translateY(0);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --body-background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-text-color: #e0e0e0;
+    --input-background: #3333331f;
+    --input-border-color: #555;
+    --button-background: #007BFF;
+    --button-hover-background: #0056b3;
+    --room-background: #1e1e1e;
+    --room-border-color: #333;
+    --room-text-color: #ffffff;
+    --description-color: #aaa;
+    --top-user-background: linear-gradient(45deg, #444, #555);
+    --top-user-text-color: #e0e0e0;
+    --background-image: var(--dark-bg-image);
+}
+
+.dark-mode body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    background-image: var(--background-image);
+    background-size: cover;
+    background-position: center;
+}
+
+.dark-mode header {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.431);
+}
+
+.dark-mode header h1 {
+    color: var(--header-text-color);
+}
+
+.dark-mode #top-user-section {
+    background-color: var(--top-user-background);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .user-row {
+    background-color: var(--room-background);
+    border: 1px solid var(--room-border-color);
+}
+
+.dark-mode .user-row:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.dark-mode .user-row:active {
+    background-color: #444;
+    transform: translateY(0);
+}
+
+.dark-mode .likes {
+    color: #ffffff;
+}
+
+.dark-mode .top-user-row .overlay {
+    color: var(--top-user-text-color);
+}

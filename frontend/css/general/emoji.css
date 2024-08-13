@@ -1,0 +1,93 @@
+body {
+    font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', 'Android Emoji', sans-serif;
+}
+
+#emoji-picker {
+    position: absolute;
+    bottom: 60px;
+    width: 300px;
+    height: 450px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: none;
+}
+
+.search-container.active-search {
+    display: block;
+}
+
+#search-input-emoji,
+#search-input-gif,
+#search-input-sticker {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.tab-button.active {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.content {
+    display: none;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.content.active-content {
+    display: block;
+}
+
+.emoji-grid,
+.gif-grid,
+.sticker-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.recent {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.emoji,
+.gif,
+.sticker {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
