@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon backend/server.js",
     "start": "node backend/server.js",
-    "build": "echo 'Skipping build step...'"
+    "build": "echo 'Building project...'"
   },
   "keywords": [],
   "author": "Cane",
