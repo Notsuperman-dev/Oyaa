@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <label class="switch">
             <input type="checkbox" id="theme-toggle">
             <span class="slider">
-                
                 <i class="fas fa-moon moon-icon"></i>
             </span>
         </label>
@@ -105,20 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
         funRoomMenu.style.display = 'none';
     });
 
-    document.getElementById('logoutBtn').addEventListener('click', async (event) => {
+    // Updated logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', (event) => {
         event.stopPropagation();
-        const response = await fetch('/api/auth/logout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-        });
-
-        if (response.ok) {
-            localStorage.removeItem('username');
-            localStorage.removeItem('userId');
-            window.location.href = '/';
-        } else {
-            alert('Logout failed');
-        }
+        localStorage.removeItem('username');
+        localStorage.removeItem('userId');
+        window.location.href = '/'; // Redirect to landing page
     });
 
     const applyTheme = (theme) => {
