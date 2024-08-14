@@ -14,6 +14,7 @@ const leaderboardRouter = require('./routes/leaderboard');
 const fs = require('fs');
 const { Sequelize, DataTypes } = require('sequelize');
 const helmet = require('helmet');
+const mediaRoutes = require('./routes/mediaRoutes');
 
 dotenv.config();
 
@@ -104,6 +105,7 @@ app.use('/api/world-chat', worldChatRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/trending', trendingRoutes);
 app.use('/api/leaderboard', leaderboardRouter);
+app.use('/api/media', mediaRoutes);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/html/auth/landing.html'));
