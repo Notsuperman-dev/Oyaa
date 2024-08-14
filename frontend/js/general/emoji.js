@@ -103,9 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        const searchUrl = query ? 
-            `https://api.giphy.com/v1/gifs/search?api_key=XIeJDczqwkG81aMbfgcbmdqrZRfVQs75&q=${encodeURIComponent(query)}&limit=10`
-            : `https://api.giphy.com/v1/gifs/trending?api_key=XIeJDczqwkG81aMbfgcbmdqrZRfVQs75&limit=10`;
+        const searchUrl = `/api/media/gifs?query=${encodeURIComponent(query)}`;
 
         fetch(searchUrl)
             .then(response => response.json())
@@ -143,9 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        const searchUrl = query ? 
-            `https://tenor.googleapis.com/v2/search?q=${encodeURIComponent(query)}&key=AIzaSyCtOXsVVRP1Hee_nCVoDenI8EhFFiSZs8o&limit=10`
-            : `https://tenor.googleapis.com/v2/search?q=trending&key=AIzaSyCtOXsVVRP1Hee_nCVoDenI8EhFFiSZs8o&limit=10`;
+        const searchUrl = `/api/media/stickers?query=${encodeURIComponent(query)}`;
 
         fetch(searchUrl)
             .then(response => response.json())
