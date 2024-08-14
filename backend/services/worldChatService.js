@@ -47,6 +47,12 @@ async function reportUser(reporter, reportedUser) {
 
 async function likeMessage(messageId, username) {
     const transaction = await sequelize.transaction(); // Start a transaction
+
+    if (!transaction) {
+        console.error("Failed to start a transaction.");
+        throw new Error("Transaction initialization failed");
+    }
+
     try {
         const existingLike = await MessageLike.findOne({
             where: { messageId, username },
@@ -88,6 +94,7 @@ async function likeMessage(messageId, username) {
         throw error;
     }
 }
+
 
 async function deleteMessage(messageId, username) {
     try {
