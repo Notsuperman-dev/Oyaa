@@ -1,5 +1,3 @@
-// backend/app.js
-
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
@@ -23,15 +21,18 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
-// Rate limiting
-const limiter = rateLimit({
+// Rate limiting for authentication routes only
+const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    max: 10, // Limit each IP to 10 requests per windowMs for auth routes
     standardHeaders: true, 
     legacyHeaders: false,
 });
-app.use(limiter);
 
+// Apply rate limiting only to auth routes
+app.use('/api/auth', authLimiter, authRoutes);
+
+// No rate limiting for other routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
@@ -105,7 +106,7 @@ app.post('/upload-image', upload.single('file'), async (req, res) => {
     }
 });
 
-app.use('/api/auth', authRoutes);
+// Other routes without rate limiting
 app.use('/api/user', userRoutes);
 app.use('/api/world-chat', worldChatRoutes);
 app.use('/api/rooms', roomRoutes);
