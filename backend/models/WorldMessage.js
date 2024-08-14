@@ -10,24 +10,21 @@ const WorldMessage = sequelize.define('WorldMessage', {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        set(value) {
-            this.setDataValue('username', value.toLowerCase());
-        }
     },
     expiresAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: () => new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
     },
-    likes: {
+    likes: {  // New field for storing the number of likes
         type: DataTypes.INTEGER,
         defaultValue: 0,
     },
 }, {
     tableName: 'WorldMessages',
-    timestamps: true,
+    timestamps: true, // Handles createdAt and updatedAt
 });
 
-WorldMessage.hasMany(MessageLike, { foreignKey: 'messageId', sourceKey: 'id', onDelete: 'CASCADE' });
+WorldMessage.hasMany(MessageLike, { foreignKey: 'messageId', sourceKey: 'id', onDelete: 'CASCADE' }); // Add this line
 
 module.exports = WorldMessage;
