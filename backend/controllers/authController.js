@@ -92,13 +92,19 @@ exports.checkSession = async (req, res) => {
 exports.logout = (req, res) => {
     console.log('Logout request received');
 
-    req.session.destroy(err => {
-        if (err) {
-            console.error('Error destroying session:', err);
-            return res.status(500).json({ message: 'Logout failed', error: err });
-        }
+    // Destroy session if any (useful if you change your mind and switch back to server-side sessions)
+    if (req.session) {
+        req.session.destroy(err => {
+            if (err) {
+                console.error('Error destroying session:', err);
+                return res.status(500).json({ message: 'Logout failed', error: err });
+            }
 
-        console.log('Session destroyed successfully');
+            console.log('Session destroyed successfully');
+            res.status(200).json({ message: 'Logout successful' });
+        });
+    } else {
+        // If there's no session, just send a success response
         res.status(200).json({ message: 'Logout successful' });
-    });
+    }
 };
