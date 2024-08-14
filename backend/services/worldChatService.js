@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const Report = require('../models/Report');
 const ReportedUserCount = require('../models/ReportedUserCount');
 const userService = require('../services/userService'); // Ensure correct import
+const { sequelize } = require('../config/db');
 
 async function addMessage(content, username) {
     return await WorldMessage.create({
@@ -45,9 +46,11 @@ async function reportUser(reporter, reportedUser) {
 }
 
 async function likeMessage(messageId, username) {
+    const transaction = await sequelize.transaction();
     try {
         const existingLike = await MessageLike.findOne({
-            where: { messageId, username }
+            where: { messageId, username },
+            transaction
         });
 
         if (existingLike) {
@@ -55,25 +58,28 @@ async function likeMessage(messageId, username) {
             throw new Error('User has already liked this message');
         }
 
-        const message = await WorldMessage.findByPk(messageId);
+        const message = await WorldMessage.findByPk(messageId, { transaction });
         if (!message) {
             console.error(`Message ID "${messageId}" not found.`);
             throw new Error('Message not found');
         }
 
         message.likes += 1;
-        await message.save();
+        await message.save({ transaction });
 
-        const user = await User.findOne({ where: { username: message.username } });
+        const user = await User.findOne({ where: { username: message.username }, transaction });
         if (user) {
             user.totalLikes += 1;
-            await user.save();
+            await user.save({ transaction });
         }
 
-        await MessageLike.create({ messageId, username });
+        await MessageLike.create({ messageId, username }, { transaction });
 
+        await transaction.commit();
         return message;
     } catch (error) {
+        await transaction.rollback();
+
         if (error.message === 'User has already liked this message') {
             console.warn(`Duplicate like attempt by user "${username}" on message ID "${messageId}".`);
         } else {
