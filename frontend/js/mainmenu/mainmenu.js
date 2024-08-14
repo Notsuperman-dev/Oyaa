@@ -3,15 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (username) {
         document.getElementById('username').innerText = username;
-
-        // Convert the username to lowercase for comparison
-        const normalizedUsername = username.toLowerCase();
-
+        
         // Fetch leaderboard and check if the logged-in user is the top user
         fetch('/api/leaderboard')
             .then(response => response.json())
             .then(users => {
-                if (users.length > 0 && users[0].username === normalizedUsername) {
+                if (users.length > 0 && users[0].username === username) {
                     const usernameElement = document.getElementById('username');
                     const crown = document.createElement('span');
                     crown.classList.add('crown');
@@ -25,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => console.error('Error fetching leaderboard:', error));
-
+        
     } else {
         // Redirect to the homepage if no username is found
         window.location.href = '/';
