@@ -1,20 +1,23 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const { Op } = require('sequelize');  // Import the Op module for case-insensitive checks
 
 // Helper function to validate username
 const isValidUsername = (username) => /^[a-zA-Z0-9_-]+$/.test(username);
 
 exports.register = async (req, res) => {
-    let { username, password } = req.body;
-    const originalUsername = username; // Preserve the original case
-    username = username.toLowerCase(); // Normalize to lowercase
+    const { username, password } = req.body;
 
     if (!isValidUsername(username)) {
         return res.status(400).json({ message: 'Username can only contain letters, numbers, hyphens, and underscores' });
     }
 
     try {
-        const userExists = await User.findOne({ where: { username } });
+        const userExists = await User.findOne({
+            where: {
+                username: { [Op.iLike]: username }  // Case-insensitive check for existing usernames
+            }
+        });
 
         if (userExists) {
             return res.status(400).json({ message: 'Username already taken' });
@@ -27,22 +30,24 @@ exports.register = async (req, res) => {
         req.session.userId = user.id;
         req.session.username = user.username; // Save username in session
 
-        console.log(`User registered and logged in: ${originalUsername}`);
+        console.log(`User registered and logged in: ${username}`);
 
         // Return the username and user ID to the frontend
-        res.status(201).json({ message: 'User registered successfully', user: { id: user.id, username: originalUsername } });
+        res.status(201).json({ message: 'User registered successfully', user: { id: user.id, username } });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });
     }
 };
 
 exports.login = async (req, res) => {
-    let { username, password } = req.body;
-    const originalUsername = username; // Preserve the original case
-    username = username.toLowerCase(); // Normalize to lowercase
+    const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ where: { username } });
+        const user = await User.findOne({
+            where: {
+                username: { [Op.iLike]: username }  // Case-insensitive check for login
+            }
+        });
 
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });
@@ -57,15 +62,13 @@ exports.login = async (req, res) => {
         req.session.userId = user.id;
         req.session.username = user.username; // Save username in session
 
-        // Minimal logging of session data, focusing only on key info
-        console.log(`User logged in: ${originalUsername} (User ID: ${user.id})`);
+        console.log(`User logged in: ${username} (User ID: ${user.id})`);
 
-        res.status(200).json({ message: 'Login successful', user: { id: user.id, username: originalUsername } });
+        res.status(200).json({ message: 'Login successful', user: { id: user.id, username: user.username } });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });
     }
 };
-
 
 exports.checkSession = async (req, res) => {
     const { userId } = req.session;
@@ -87,12 +90,9 @@ exports.checkSession = async (req, res) => {
     }
 };
 
-
-
 exports.logout = (req, res) => {
     console.log('Logout request received');
 
-    // Destroy session if any (useful if you change your mind and switch back to server-side sessions)
     if (req.session) {
         req.session.destroy(err => {
             if (err) {
@@ -104,7 +104,6 @@ exports.logout = (req, res) => {
             res.status(200).json({ message: 'Logout successful' });
         });
     } else {
-        // If there's no session, just send a success response
         res.status(200).json({ message: 'Logout successful' });
     }
 };
