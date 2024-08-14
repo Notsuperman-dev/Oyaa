@@ -1,3 +1,5 @@
+// backend/app.js
+
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
@@ -12,7 +14,6 @@ const leaderboardRouter = require('./routes/leaderboard');
 const fs = require('fs');
 const { Sequelize, DataTypes } = require('sequelize');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 
 dotenv.config();
 
@@ -21,18 +22,8 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
-// Rate limiting for authentication routes only
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10, // Limit each IP to 10 requests per windowMs for auth routes
-    standardHeaders: true, 
-    legacyHeaders: false,
-});
+// Removed rate limiting
 
-// Apply rate limiting only to auth routes
-app.use('/api/auth', authLimiter, authRoutes);
-
-// No rate limiting for other routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
@@ -106,7 +97,8 @@ app.post('/upload-image', upload.single('file'), async (req, res) => {
     }
 });
 
-// Other routes without rate limiting
+// Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/world-chat', worldChatRoutes);
 app.use('/api/rooms', roomRoutes);
