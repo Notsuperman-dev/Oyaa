@@ -1,141 +1,107 @@
-const WorldMessage = require('../models/WorldMessage');
-const User = require('../models/User');
-const MessageLike = require('../models/MessageLike');
 const { Op } = require('sequelize');
+const worldChatService = require('../services/worldChatService');
+const WorldMessage = require('../models/WorldMessage');
 const Report = require('../models/Report');
 const ReportedUserCount = require('../models/ReportedUserCount');
-const userService = require('../services/userService'); // Ensure correct import
-const { sequelize } = require('../config/db');
 
-async function addMessage(content, username) {
-    return await WorldMessage.create({
-        content,
-        username,
-        expiresAt: new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
-    });
-}
-
-async function getMessages() {
-    console.log('Fetching messages');
-    return await WorldMessage.findAll({
-        where: {
-            expiresAt: {
-                [Op.gt]: new Date() // Only fetch messages that haven't expired
-            }
-        },
-        order: [['createdAt', 'DESC']]
-    });
-}
-
-async function reportUser(reporter, reportedUser) {
-    // Create a new report
-    await Report.create({ reporter, reportedUser });
-
-    // Update the report count for the reported user
-    const [reportedUserCount, created] = await ReportedUserCount.findOrCreate({
-        where: { username: reportedUser },
-        defaults: { reportCount: 1 },
-    });
-
-    if (!created) {
-        reportedUserCount.reportCount += 1;
-        await reportedUserCount.save();
-    }
-
-    return reportedUserCount;
-}
-
-async function likeMessage(messageId, username) {
-    const transaction = await sequelize.transaction(); // Start a transaction
-
-    if (!transaction) {
-        console.error("Failed to start a transaction.");
-        throw new Error("Transaction initialization failed");
-    }
-
+exports.getMessages = async (req, res) => {
     try {
-        const existingLike = await MessageLike.findOne({
-            where: { messageId, username },
-            transaction // Pass the transaction to the query
+        console.log('Fetching messages');
+        const messages = await worldChatService.getMessages();
+        res.json(messages);
+    } catch (error) {
+        console.error('Error fetching messages:', error);
+        res.status(500).send(error.message);
+    }
+};
+
+exports.addMessage = async (req, res) => {
+    try {
+        let username = req.session.username;
+        if (!username) {
+            username = req.body.username; // Get from local storage
+        }
+
+        if (!username) {
+            console.error('Username is undefined in addMessage');
+            return res.status(400).send('Username is required');
+        }
+        console.log('Adding message for user:', username);
+        const message = await worldChatService.addMessage(req.body.message, username);
+        res.json(message);
+    } catch (error) {
+        console.error('Error adding message:', error);
+        res.status(500).send(error.message);
+    }
+};
+
+exports.reportUser = async (req, res) => {
+    try {
+        const { reporter, reportedUser } = req.body;
+        if (!reporter || !reportedUser) {
+            return res.status(400).send('Both reporter and reported user are required');
+        }
+        const reportedUserCount = await worldChatService.reportUser(reporter, reportedUser);
+        res.json(reportedUserCount);
+    } catch (error) {
+        console.error('Error reporting user:', error);
+        res.status(500).send(error.message);
+    }
+};
+
+exports.getReportedUsers = async (req, res) => {
+    try {
+        const reportedUsers = await ReportedUserCount.findAll({
+            where: {
+                reportCount: {
+                    [Op.gt]: 10
+                }
+            }
+        });
+        res.json(reportedUsers);
+    } catch (error) {
+        console.error('Error fetching reported users:', error);
+        res.status(500).send(error.message);
+    }
+};
+
+// New method to get reporters for a specific user
+exports.getReportersForUser = async (req, res) => {
+    try {
+        const { username } = req.params;
+        const reports = await Report.findAll({
+            where: { reportedUser: username },
+            attributes: ['reporter']
         });
 
-        if (existingLike) {
-            console.warn(`User "${username}" already liked message ID "${messageId}".`);
-            throw new Error('User has already liked this message');
-        }
-
-        const message = await WorldMessage.findByPk(messageId, { transaction }); // Pass the transaction
-        if (!message) {
-            console.error(`Message ID "${messageId}" not found.`);
-            throw new Error('Message not found');
-        }
-
-        message.likes += 1;
-        await message.save({ transaction }); // Pass the transaction
-
-        const user = await User.findOne({ where: { username: message.username }, transaction }); // Pass the transaction
-        if (user) {
-            user.totalLikes += 1;
-            await user.save({ transaction }); // Pass the transaction
-        }
-
-        await MessageLike.create({ messageId, username }, { transaction }); // Pass the transaction
-
-        await transaction.commit(); // Commit the transaction
-        return message;
+        const reporters = reports.map(report => report.reporter);
+        res.json(reporters);
     } catch (error) {
-        await transaction.rollback(); // Rollback the transaction in case of error
-
-        if (error.message === 'User has already liked this message') {
-            console.warn(`Duplicate like attempt by user "${username}" on message ID "${messageId}".`);
-        } else {
-            console.error(`Error in likeMessage: ${error.message}`);
-        }
-        throw error;
+        console.error(`Error fetching reporters for user ${username}:`, error);
+        res.status(500).send(error.message);
     }
-}
+};
 
-
-async function deleteMessage(messageId, username) {
+// Updated method to like a message
+exports.likeMessage = async (req, res) => {
     try {
-        console.log(`Delete request: message ID "${messageId}" by user "${username}"`);
+        const { messageId, username: bodyUsername } = req.body;
+        let username = req.session.username || bodyUsername;
 
-        const message = await WorldMessage.findByPk(messageId);
-        if (!message) {
-            console.error(`Message ID "${messageId}" not found`);
-            throw new Error('Message not found');
+        // Log session data and username for debugging
+        console.log('Session data:', req.session);
+        console.log('Username from request body:', bodyUsername);
+        console.log('Username used:', username);
+
+        if (!username) {
+            console.error('Username is undefined in likeMessage');
+            return res.status(400).send('Username is required');
         }
 
-        const user = await User.findOne({ where: { username } });
-        if (!user) {
-            console.error(`User "${username}" not found`);
-            throw new Error('User not found');
-        }
-
-        const topUser = await userService.getTopUser();
-        if (!topUser) {
-            console.error('Top user not found');
-            throw new Error('Top user not found');
-        }
-
-        if (user.username !== topUser.username) {
-            console.error(`Unauthorized delete by user "${username}"`);
-            throw new Error('Unauthorized user');
-        }
-
-        await message.destroy();
-        console.log(`Message ID "${messageId}" deleted by user "${username}"`);
-        return message;
+        const message = await worldChatService.likeMessage(messageId, username);
+        res.json({ success: true, likes: message.likes });
     } catch (error) {
-        console.error(`Error in deleteMessage: ${error.message}`);
-        throw error;
+        console.error('Error liking message:', error);
+        res.status(500).send(error.message);
     }
-}
-
-module.exports = {
-    addMessage,
-    getMessages,
-    reportUser,
-    likeMessage, 
-    deleteMessage 
 };
