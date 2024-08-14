@@ -46,11 +46,11 @@ async function reportUser(reporter, reportedUser) {
 }
 
 async function likeMessage(messageId, username) {
-    const transaction = await sequelize.transaction();
+    const transaction = await sequelize.transaction(); // Start a transaction
     try {
         const existingLike = await MessageLike.findOne({
             where: { messageId, username },
-            transaction
+            transaction // Pass the transaction to the query
         });
 
         if (existingLike) {
@@ -58,27 +58,27 @@ async function likeMessage(messageId, username) {
             throw new Error('User has already liked this message');
         }
 
-        const message = await WorldMessage.findByPk(messageId, { transaction });
+        const message = await WorldMessage.findByPk(messageId, { transaction }); // Pass the transaction
         if (!message) {
             console.error(`Message ID "${messageId}" not found.`);
             throw new Error('Message not found');
         }
 
         message.likes += 1;
-        await message.save({ transaction });
+        await message.save({ transaction }); // Pass the transaction
 
-        const user = await User.findOne({ where: { username: message.username }, transaction });
+        const user = await User.findOne({ where: { username: message.username }, transaction }); // Pass the transaction
         if (user) {
             user.totalLikes += 1;
-            await user.save({ transaction });
+            await user.save({ transaction }); // Pass the transaction
         }
 
-        await MessageLike.create({ messageId, username }, { transaction });
+        await MessageLike.create({ messageId, username }, { transaction }); // Pass the transaction
 
-        await transaction.commit();
+        await transaction.commit(); // Commit the transaction
         return message;
     } catch (error) {
-        await transaction.rollback();
+        await transaction.rollback(); // Rollback the transaction in case of error
 
         if (error.message === 'User has already liked this message') {
             console.warn(`Duplicate like attempt by user "${username}" on message ID "${messageId}".`);
