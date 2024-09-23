@@ -2,7 +2,7 @@
 :root {
     --font-family: 'Rubik', sans-serif;
     --background-color: #f4f4f4; /* Light background color */
-    --background-image: url('/images/lightBG.jpg'); /* Light mode background image */
+    --background-image: url('/images/lightBGv.webp'); /* Light mode background image */
     --text-color: #333; /* Light text color */
     --heading-color: #555; /* Light heading color */
     --paragraph-color: #6c757d; /* Light paragraph color */
@@ -13,7 +13,7 @@
 /* Dark mode variables */
 .dark-mode {
     --background-color: #1a1a1b; /* Dark background color */
-    --background-image: url('/images/darkBG.jpg'); /* Dark mode background image */
+    --background-image: url('/images/darkBGv.webp'); /* Dark mode background image */
     --text-color: #d7dadc; /* Dark text color */
     --heading-color: #e0e0e0; /* Dark heading color */
     --paragraph-color: #b0b0b0; /* Dark paragraph color */
