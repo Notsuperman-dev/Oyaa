@@ -2,7 +2,7 @@
 :root {
     --font-family: 'Rubik', sans-serif;
     --body-background-color: #f4f4f4;
-    --body-background-image: url('/images/lightBG.jpg');
+    --body-background-image: url('/images/lightBGv.webp');
     --text-color: #333;
     --container-background: #ffffffca;
     --input-background: #ffffff;
@@ -146,7 +146,7 @@ body {
 /* Dark Mode */
 .dark-mode {
     --body-background-color: #1a1a1b;
-    --body-background-image: url('/images/darkBG.jpg');
+    --body-background-image: url('/images/darkBGv.webp');
     --text-color: #d7dadc;
     --container-background: #272729e3;
     --input-background: #1f1f1f;
