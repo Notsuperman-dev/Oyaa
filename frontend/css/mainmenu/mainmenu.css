@@ -32,7 +32,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color-light);
-    background-image: url('/images/lightBG.jpg');
+    background-image: url('/images/lightBGv.webp');
     background-position: center;
     background-size: cover;
     color: var(--text-color-light);
@@ -181,7 +181,7 @@ body {
 
 .dark-mode body {
     background-color: var(--background-color-light);
-    background-image: url('/images/darkBG.jpg');
+    background-image: url('/images/darkBGv.webp');
     color: var(--text-color-light);
 }
 
