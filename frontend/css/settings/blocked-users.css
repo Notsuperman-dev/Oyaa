@@ -13,8 +13,8 @@
     --unblock-user-background: #ff4d4d;
     --unblock-user-hover-background: #ff1a1a;
     
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
 }
 /* General styles */
 * {
