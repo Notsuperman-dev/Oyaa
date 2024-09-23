@@ -8,8 +8,8 @@
     --button-hover-background: #0056b3;
     --button-active-background: #004080;
     --button-text-color: #fff;
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
 }
 
 body {
