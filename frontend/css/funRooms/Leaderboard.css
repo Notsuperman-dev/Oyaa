@@ -16,8 +16,8 @@
     --top-user-background: linear-gradient(45deg, #ffd700, #ffa500);
     --top-user-text-color: #000;
 
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
 }
 
 /* Base styling */
