@@ -15,8 +15,8 @@
     --medium-font-size: 1em;
     --large-font-size: 1.2em;
     --x-large-font-size: 1.5em;
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
 }
 * {
     font-family: var(--font-family);
