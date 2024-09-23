@@ -16,8 +16,8 @@
     --online-indicator: #28a745;
     --description-color: #fff;
 
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
 }
 
 body {
