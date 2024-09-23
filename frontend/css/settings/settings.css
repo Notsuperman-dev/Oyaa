@@ -2,7 +2,7 @@
 :root {
     --font-family: 'Rubik', sans-serif;
     --background-color: #f7f7f7;
-    --background-image: url('/images/lightBG.jpg'); /* Background image for light mode */
+    --background-image: url('/images/lightBGv.webp'); /* Background image for light mode */
     --text-color: #333;
     --header-background: #007bff;
     --header-text-color: #fff;
@@ -219,7 +219,7 @@ button:focus {
 /* Dark Mode */
 .dark-mode {
     --background-color: #1a1a1b;
-    --background-image: url('/images/darkBG.jpg'); /* Background image for dark mode */
+    --background-image: url('/images/darkBGv.webp'); /* Background image for dark mode */
     --text-color: #d7dadc;
     --header-background: #0079d3;
     --header-text-color: #fff;
