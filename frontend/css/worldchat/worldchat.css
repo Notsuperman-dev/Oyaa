@@ -21,8 +21,8 @@
     --color-top-user-text: #FF4500;
     --color-top-user-bubble-text: #000;
     --top-user-icon-url: url('./top-user.png');
-    --light-bg-image: url('/images/lightBG.jpg');
-    --dark-bg-image: url('/images/darkBG.jpg');
+    --light-bg-image: url('/images/lightBGv.webp');
+    --dark-bg-image: url('/images/darkBGv.webp');
     --color-sent-bubble-light: #007bff; /* Light mode color for sent bubbles */
     --color-received-bubble-light: #e0e0e0; /* Light mode color for received bubbles */
     --color-sent-bubble-dark: #1E90FF; /* Dark mode color for sent bubbles */
